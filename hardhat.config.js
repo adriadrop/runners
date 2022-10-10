@@ -11,7 +11,7 @@ const MAINNET_RPC_URL =
 const GOERLI_RPC_URL =
     process.env.GOERLI_RPC_URL || "https://eth-goerli.g.alchemy.com/v2/b-AYLuj4Q_Xwb3NWOqziZiwVJYf_Fk4i";
 const ARBITRUM_RPC_URL =
-    process.env.GOERLI_RPC_URL || "https://eth-goerli.g.alchemy.com/v2/b-AYLuj4Q_Xwb3NWOqziZiwVJYf_Fk4i";
+    process.env.ARBITRUM_RPC_URL || "https://eth-goerli.g.alchemy.com/v2/b-AYLuj4Q_Xwb3NWOqziZiwVJYf_Fk4i";
 
 const PRIVATE_KEY = process.env.PRIVATE_KEY || "0x";
 // optional
@@ -19,6 +19,7 @@ const MNEMONIC = process.env.MNEMONIC || "your mnemonic";
 
 // Your API key for Etherscan, obtain one at https://etherscan.io/
 const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY || "Your etherscan API key";
+const ARBYSCAN_API_KEY = process.env.ARBYSCAN_API_KEY || "Your etherscan API key";
 const REPORT_GAS = process.env.REPORT_GAS || false;
 
 module.exports = {
@@ -47,7 +48,7 @@ module.exports = {
             saveDeployments: true,
             chainId: 5,
         },
-        arbitrum: {
+        arbitrumOne: {
             url: ARBITRUM_RPC_URL,
             accounts: PRIVATE_KEY !== undefined ? [PRIVATE_KEY] : [],
             saveDeployments: true,
@@ -58,14 +59,14 @@ module.exports = {
         // yarn hardhat verify --network <NETWORK> <CONTRACT_ADDRESS> <CONSTRUCTOR_PARAMETERS>
         apiKey: {
             goerli: ETHERSCAN_API_KEY,
-            arbitrumOne: ETHERSCAN_API_KEY,
+            arbitrumOne: ARBYSCAN_API_KEY,
             mainnet: ETHERSCAN_API_KEY,
         },
     },
     gasReporter: {
         enabled: REPORT_GAS,
         currency: "USD",
-        //gasPrice: 8,
+        gasPrice: 8,
         //      outputFile: "gas-report.txt",
         //      noColors: true,
         coinmarketcap: process.env.CMC_KEY,
