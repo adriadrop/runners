@@ -1,23 +1,25 @@
 const hre = require("hardhat");
 const fs = require("fs");
+const { verify } = require("../utils/verify");
+require("dotenv").config()
 
 async function main() {
     const Runners = await hre.ethers.getContractFactory("Runners");
     const runners = await Runners.deploy();
 
-    await runners.deployed();
+    const runnersContract = await runners.deployed();
     console.log(`Runners deployed to ${runners.address}`);
+    await runnersContract.deployTransaction.wait(2);
 
     // Mint all at once per erc721a
     const mint = await runners.mint();
-    await mint.wait(6);
+    await mint.wait(2);
+
 
     arguments = [];
-
-    // await simpleStorage.deployTransaction.wait(6)
     // Verify the deployment
     if (process.env.ETHERSCAN_API_KEY) {
-        log("Verifying...");
+        console.log("Verifying...");
         await verify(runners.address, arguments);
     }
 }
