@@ -1,7 +1,7 @@
 const hre = require("hardhat");
 const fs = require("fs");
 const { verify } = require("../utils/verify");
-require("dotenv").config()
+require("dotenv").config();
 
 async function main() {
     const Runners = await hre.ethers.getContractFactory("Runners");
@@ -14,7 +14,6 @@ async function main() {
     // Mint all at once per erc721a
     const mint = await runners.mint();
     await mint.wait(2);
-
 
     arguments = [];
     // Verify the deployment

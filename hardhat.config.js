@@ -1,5 +1,5 @@
 require("@nomicfoundation/hardhat-toolbox");
-require("@nomiclabs/hardhat-ethers")
+require("@nomiclabs/hardhat-ethers");
 require("hardhat-deploy");
 require("hardhat-contract-sizer");
 require("dotenv").config();
@@ -8,8 +8,10 @@ const MAINNET_RPC_URL =
     process.env.MAINNET_RPC_URL ||
     process.env.ALCHEMY_MAINNET_RPC_URL ||
     "https://eth-mainnet.alchemyapi.io/v2/your-api-key";
-const GOERLI_RPC_URL = process.env.GOERLI_RPC_URL || "https://eth-goerli.g.alchemy.com/v2/b-AYLuj4Q_Xwb3NWOqziZiwVJYf_Fk4i";
-const ARBITRUM_RPC_URL = process.env.GOERLI_RPC_URL || "https://eth-goerli.g.alchemy.com/v2/b-AYLuj4Q_Xwb3NWOqziZiwVJYf_Fk4i";
+const GOERLI_RPC_URL =
+    process.env.GOERLI_RPC_URL || "https://eth-goerli.g.alchemy.com/v2/b-AYLuj4Q_Xwb3NWOqziZiwVJYf_Fk4i";
+const ARBITRUM_RPC_URL =
+    process.env.GOERLI_RPC_URL || "https://eth-goerli.g.alchemy.com/v2/b-AYLuj4Q_Xwb3NWOqziZiwVJYf_Fk4i";
 
 const PRIVATE_KEY = process.env.PRIVATE_KEY || "0x";
 // optional
@@ -55,9 +57,9 @@ module.exports = {
     etherscan: {
         // yarn hardhat verify --network <NETWORK> <CONTRACT_ADDRESS> <CONSTRUCTOR_PARAMETERS>
         apiKey: {
-          goerli: ETHERSCAN_API_KEY,
-          arbitrum: ETHERSCAN_API_KEY,
-          mainnet: ETHERSCAN_API_KEY,
+            goerli: ETHERSCAN_API_KEY,
+            arbitrumOne: ETHERSCAN_API_KEY,
+            mainnet: ETHERSCAN_API_KEY,
         },
     },
     gasReporter: {
