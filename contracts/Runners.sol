@@ -5,11 +5,10 @@ pragma solidity ^0.8.9;
 import "erc721a/contracts/ERC721A.sol";
 
 contract Runners is ERC721A {
-    // Sudo NFT variables
     bool minted;
     string constant ipfs = "ipfs://QmUeA3dbnDrZ8hVLYVF3BEwWR2tyibxJr1dQgV5Acd1eCe/";
 
-    constructor() ERC721A("Blade City Runners", "BRUU") {}
+    constructor() ERC721A("Blade City Runners", "CRUU") {}
 
     function _baseURI() internal pure override returns (string memory) {
         return ipfs;
