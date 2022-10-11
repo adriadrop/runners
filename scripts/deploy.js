@@ -14,6 +14,7 @@ async function main() {
     // Mint all at once per erc721a
     const mint = await runners.mint();
     await mint.wait(2);
+    console.log(`Runners minted at ${runners.address}`);
 
     arguments = [];
     // Verify the deployment
