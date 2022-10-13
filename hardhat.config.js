@@ -13,6 +13,10 @@ const GOERLI_RPC_URL =
 const ARBITRUM_RPC_URL =
     process.env.ARBITRUM_RPC_URL || "https://eth-goerli.g.alchemy.com/v2/b-AYLuj4Q_Xwb3NWOqziZiwVJYf_Fk4i";
 
+    const POLYGON_RPC_URL = process.env.POLYGON_RPC_URL
+
+    
+
 const PRIVATE_KEY = process.env.PRIVATE_KEY || "0x";
 // optional
 const MNEMONIC = process.env.MNEMONIC || "your mnemonic";
@@ -20,6 +24,7 @@ const MNEMONIC = process.env.MNEMONIC || "your mnemonic";
 // Your API key for Etherscan, obtain one at https://etherscan.io/
 const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY || "Your etherscan API key";
 const ARBYSCAN_API_KEY = process.env.ARBYSCAN_API_KEY || "Your etherscan API key";
+const POLYGONSCAN_API_KEY = process.env.POLYGONSCAN_API_KEY;
 const REPORT_GAS = process.env.REPORT_GAS || false;
 
 module.exports = {
@@ -48,6 +53,14 @@ module.exports = {
             saveDeployments: true,
             chainId: 5,
         },
+        polygon: {
+            url: POLYGON_RPC_URL,
+            accounts: PRIVATE_KEY !== undefined ? [PRIVATE_KEY] : [],
+            saveDeployments: true,
+            chainId: 137,
+            // gas: 21520590,
+            // gasPrice: 176000000000,
+        },
         arbitrumOne: {
             url: ARBITRUM_RPC_URL,
             accounts: PRIVATE_KEY !== undefined ? [PRIVATE_KEY] : [],
@@ -61,6 +74,7 @@ module.exports = {
             goerli: ETHERSCAN_API_KEY,
             arbitrumOne: ARBYSCAN_API_KEY,
             mainnet: ETHERSCAN_API_KEY,
+            polygon: POLYGONSCAN_API_KEY,
         },
     },
     gasReporter: {

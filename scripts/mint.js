@@ -6,17 +6,9 @@ require("dotenv").config();
 
 async function main() {
     const developmentChains = ["hardhat", "localhost"];
-    const Runners = await hre.ethers.getContractFactory("Runners");
-    const runners = await Runners.deploy();
+    const contractAddress = "0x5b644CD6B5282e6523c6627df27eB9352B1d7F4B";
 
-    console.log(network.name);
-
-    const runnersContract = await runners.deployed();
-    console.log(`Runners deployed to ${runners.address}`);
-
-    if (!developmentChains.includes(network.name)) {
-        await runnersContract.deployTransaction.wait(2);
-    }
+    const runners = await ethers.getContractAt("Runners", contractAddress);
 
     // Mint all at once per erc721a
     const mint = await runners.mint();
@@ -29,7 +21,7 @@ async function main() {
 
     arguments = [];
     // Verify the deployment
-    if (process.env.ETHERSCAN_API_KEY && !developmentChains.includes(network.name)) {
+    if (process.env.POLYGONSCAN_API_KEY && !developmentChains.includes(network.name)) {
         console.log("Verifying...");
         await verify(runners.address, arguments);
     }
