@@ -7,7 +7,7 @@ require("dotenv").config();
 async function main() {
     const developmentChains = ["hardhat", "localhost"];
     const Runners = await hre.ethers.getContractFactory("Runners");
-    const runners = await Runners.deploy();
+    const runners = await Runners.deploy({ gasPrice: ethers.utils.parseUnits("30", "gwei") });
 
     console.log(network.name);
 

@@ -13,9 +13,7 @@ const GOERLI_RPC_URL =
 const ARBITRUM_RPC_URL =
     process.env.ARBITRUM_RPC_URL || "https://eth-goerli.g.alchemy.com/v2/b-AYLuj4Q_Xwb3NWOqziZiwVJYf_Fk4i";
 
-    const POLYGON_RPC_URL = process.env.POLYGON_RPC_URL
-
-    
+const POLYGON_RPC_URL = process.env.POLYGON_RPC_URL;
 
 const PRIVATE_KEY = process.env.PRIVATE_KEY || "0x";
 // optional
@@ -67,6 +65,12 @@ module.exports = {
             saveDeployments: true,
             chainId: 42161,
         },
+        mainnet: {
+            url: MAINNET_RPC_URL,
+            accounts: PRIVATE_KEY !== undefined ? [PRIVATE_KEY] : [],
+            saveDeployments: true,
+            chainId: 1,
+        },
     },
     etherscan: {
         // yarn hardhat verify --network <NETWORK> <CONTRACT_ADDRESS> <CONSTRUCTOR_PARAMETERS>
@@ -80,7 +84,7 @@ module.exports = {
     gasReporter: {
         enabled: REPORT_GAS,
         currency: "USD",
-  //      gasPrice: 8,
+        //      gasPrice: 8,
         //      outputFile: "gas-report.txt",
         //      noColors: true,
         coinmarketcap: process.env.CMC_KEY,
