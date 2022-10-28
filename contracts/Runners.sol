@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: MIT
+// This is ERC721A contract
 
 pragma solidity ^0.8.9;
 
@@ -20,6 +21,13 @@ contract Runners is Ownable, ERC721A, ReentrancyGuard {
         require(!minted, "Mint already completed");
 
         _mint(msg.sender, 10000);
+        minted = true;
+    }
+
+    function mintOne() external payable onlyOwner {
+        require(!minted, "Mint already completed");
+
+        _mint(msg.sender, 1);
         minted = true;
     }
 

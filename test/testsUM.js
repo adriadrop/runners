@@ -7,23 +7,13 @@ describe("runnersBasic", function () {
     beforeEach(async () => {
         accounts = await ethers.getSigners();
         deployer = accounts[0];
-        runnersFactory = await ethers.getContractFactory("Runners0");
+        runnersFactory = await ethers.getContractFactory("RunnersUM");
         runners = await runnersFactory.deploy();
     });
 
-    describe("erc721 runners", function () {
-        it("can mint all supply", async () => {
-            const minted = await runners.mintBulk();
-            // const supply = await runners.totalSupply();
-            // console.log(supply.toNumber());
-            // const deployerSupply = await runners.balanceOf(deployer.address);
-            // assert.equal(supply.toNumber(), deployerSupply.toNumber());
-        });
-    });
-
-    describe("erc721 runners", function () {
+    describe("ERC721A runners with enum", function () {
         it("mint one", async () => {
-            const minted = await runners.mintOne(deployer.address);
+            const minted = await runners.mint(1);
             // const supply = await runners.totalSupply();
             // console.log(supply.toNumber());
             // const deployerSupply = await runners.balanceOf(deployer.address);

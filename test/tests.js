@@ -11,13 +11,19 @@ describe("runnersBasic", function () {
         runners = await runnersFactory.deploy();
     });
 
-    describe("regular runners", function () {
+    describe("erc721A runners", function () {
         it("can mint all supply", async () => {
             const minted = await runners.mint();
             const supply = await runners.totalSupply();
             console.log(supply.toNumber());
             const deployerSupply = await runners.balanceOf(deployer.address);
             assert.equal(supply.toNumber(), deployerSupply.toNumber());
+        });
+    });
+
+    describe("erc721A runners", function () {
+        it("mint one", async () => {
+            const minted = await runners.mintOne();
         });
     });
 });
