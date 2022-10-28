@@ -11,9 +11,9 @@ describe("runnersBasic", function () {
         runners = await runnersFactory.deploy();
     });
 
-    describe("ERC721A runners with enum", function () {
+    describe("ERC721A runners", function () {
         it("mint one", async () => {
-            const minted = await runners.mint(1);
+            const minted = await runners.mint(5);
             // const supply = await runners.totalSupply();
             // console.log(supply.toNumber());
             // const deployerSupply = await runners.balanceOf(deployer.address);

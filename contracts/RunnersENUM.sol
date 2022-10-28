@@ -3,16 +3,19 @@
 
 pragma solidity ^0.8.9;
 
-import "erc721a/contracts/ERC721A.sol";
+
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
+import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
+import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
+import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 
-contract RunnersUM is Ownable, ERC721A, ReentrancyGuard {
+contract RunnersENUM is Ownable, ReentrancyGuard, ERC721Enumerable {
     bool minted;
     string private ipfs = "ipfs://QmUeA3dbnDrZ8hVLYVF3BEwWR2tyibxJr1dQgV5Acd1eCe/";
     uint256 public constant maxTokenSupply = 10000;
 
-    constructor() ERC721A("Blade City Runners", "CRUU") {}
+    constructor() ERC721("Blade City Runners", "CRUU") {}
 
     modifier callerIsUser() {
         require(tx.origin == msg.sender, "Cannot be called by a contract");
